@@ -253,6 +253,7 @@
         }
 
         .general-photo {
+            position: relative;
             width: 100%;
             aspect-ratio: 3/4;
             border: 3px solid #8f7d59;
@@ -261,6 +262,18 @@
             transition: all 0.2s;
             box-shadow: 5px 5px 0 #030603;
             background: #1e2b1e;
+        }
+
+        .general-photo::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            pointer-events: none;
+            z-index: 1;
         }
 
         .general-photo:active {
@@ -274,6 +287,40 @@
             height: 100%;
             object-fit: cover;
             display: block;
+        }
+
+        /* СТИЛИ ДЛЯ НАДПИСЕЙ НА ФОТО */
+        .photo-label {
+            position: absolute;
+            bottom: 8px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #ffd966;
+            font-family: 'Black Ops One', cursive;
+            font-size: clamp(0.8rem, 2vw, 1.2rem);
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0 #000, 0 0 10px #ffaa00;
+            z-index: 2;
+            letter-spacing: 2px;
+            padding: 0 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .photo-label::before {
+            content: "⚡";
+            margin-right: 5px;
+            color: #ffd700;
+            font-size: 1.2em;
+        }
+
+        .photo-label::after {
+            content: "⚡";
+            margin-left: 5px;
+            color: #ffd700;
+            font-size: 1.2em;
         }
 
         .general-text {
@@ -740,27 +787,38 @@
                 <span>◄ МИССИЯ: ПОЗДРАВЛЕНИЕ</span>
             </div>
 
-            <!-- ПРОФИЛЬ ГЕНЕРАЛА С 6 ФОТО -->
+            <!-- ПРОФИЛЬ ГЕНЕРАЛА С 6 ФОТО И НАДПИСЯМИ -->
             <div class="general-profile" id="generalProfile">
                 <div class="general-photos">
-                    <!-- ЗАМЕНИ ЭТИ ПУТИ НА РЕАЛЬНЫЕ ПУТИ К ТВОИМ ФОТО -->
+                    <!-- ФОТО 1 -->
                     <div class="general-photo" data-caption="Командир, 2025">
                         <img src="papaphoto1.jpg" alt="Фото 1" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО 1'">
+                        <div class="photo-label">ГЛАВНОКОМАНДУЮЩИЙ</div>
                     </div>
+                    <!-- ФОТО 2 -->
                     <div class="general-photo" data-caption="На задании">
                         <img src="papaphoto2.jpg" alt="Фото 2" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО 2'">
+                        <div class="photo-label">НА БОЕВОМ ЗАДАНИИ</div>
                     </div>
+                    <!-- ФОТО 3 -->
                     <div class="general-photo" data-caption="Ветеран">
                         <img src="papaphoto3.jpg" alt="Фото 3" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО 3'">
+                        <div class="photo-label">ВЕТЕРАН ★</div>
                     </div>
+                    <!-- ФОТО 4 -->
                     <div class="general-photo" data-caption="Отдых">
                         <img src="papaphoto4.jpg" alt="Фото 4" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО 4'">
+                        <div class="photo-label">ЗАСЛУЖЕННЫЙ ОТДЫХ</div>
                     </div>
+                    <!-- ФОТО 5 -->
                     <div class="general-photo" data-caption="С друзьями">
                         <img src="papaphoto5.jpg" alt="Фото 5" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО 5'">
+                        <div class="photo-label">В КРУГУ СОЮЗНИКОВ</div>
                     </div>
+                    <!-- ФОТО 6 -->
                     <div class="general-photo" data-caption="Легенда">
                         <img src="papaphoto6.jpg" alt="Фото 6" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО 6'">
+                        <div class="photo-label">ЖИВАЯ ЛЕГЕНДА</div>
                     </div>
                 </div>
                 <div class="general-text">
@@ -913,33 +971,26 @@
                 }
             });
 
-            // КНОПКА ПОКАЗАТЬ ОТРЯД - ИСПРАВЛЕНО!
+            // КНОПКА ПОКАЗАТЬ ОТРЯД
             const showSquadBtn = document.getElementById('showSquadBtn');
             const confirmModal = document.getElementById('confirmModal');
             const squadSection = document.getElementById('squadSection');
             const confirmYes = document.getElementById('confirmYes');
             const confirmNo = document.getElementById('confirmNo');
 
-            // Добавляем обработчик на кнопку "Показать отряд"
             showSquadBtn.addEventListener('click', function() {
-                console.log('Кнопка нажата'); // для отладки
                 confirmModal.classList.add('active');
             });
 
-            // Обработчик на кнопку "ПРИНЯТЬ"
             confirmYes.addEventListener('click', function() {
-                console.log('Принято'); // для отладки
                 squadSection.classList.add('active');
                 confirmModal.classList.remove('active');
             });
 
-            // Обработчик на кнопку "ОТКЛОНИТЬ"
             confirmNo.addEventListener('click', function() {
-                console.log('Отклонено'); // для отладки
                 confirmModal.classList.remove('active');
             });
 
-            // Закрытие модалки при клике вне её (опционально)
             confirmModal.addEventListener('click', function(e) {
                 if (e.target === confirmModal) {
                     confirmModal.classList.remove('active');
