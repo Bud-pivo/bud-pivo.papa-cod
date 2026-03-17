@@ -390,6 +390,11 @@
             padding: 15px;
         }
 
+        .confirm-modal.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
         .confirm-content {
             max-width: 600px;
             width: 100%;
@@ -454,7 +459,7 @@
         }
 
         .squad-section.active {
-            display: block;
+            display: block !important;
             animation: fadeIn 0.5s;
         }
 
@@ -908,24 +913,37 @@
                 }
             });
 
-            // КНОПКА ПОКАЗАТЬ ОТРЯД
+            // КНОПКА ПОКАЗАТЬ ОТРЯД - ИСПРАВЛЕНО!
             const showSquadBtn = document.getElementById('showSquadBtn');
             const confirmModal = document.getElementById('confirmModal');
             const squadSection = document.getElementById('squadSection');
             const confirmYes = document.getElementById('confirmYes');
             const confirmNo = document.getElementById('confirmNo');
 
-            showSquadBtn.addEventListener('click', () => {
+            // Добавляем обработчик на кнопку "Показать отряд"
+            showSquadBtn.addEventListener('click', function() {
+                console.log('Кнопка нажата'); // для отладки
                 confirmModal.classList.add('active');
             });
 
-            confirmYes.addEventListener('click', () => {
+            // Обработчик на кнопку "ПРИНЯТЬ"
+            confirmYes.addEventListener('click', function() {
+                console.log('Принято'); // для отладки
                 squadSection.classList.add('active');
                 confirmModal.classList.remove('active');
             });
 
-            confirmNo.addEventListener('click', () => {
+            // Обработчик на кнопку "ОТКЛОНИТЬ"
+            confirmNo.addEventListener('click', function() {
+                console.log('Отклонено'); // для отладки
                 confirmModal.classList.remove('active');
+            });
+
+            // Закрытие модалки при клике вне её (опционально)
+            confirmModal.addEventListener('click', function(e) {
+                if (e.target === confirmModal) {
+                    confirmModal.classList.remove('active');
+                }
             });
 
             // ЗАКРЫТЬ ДЕЛО
@@ -933,11 +951,11 @@
             const celebrationScreen = document.getElementById('celebrationScreen');
             const celebrationClose = document.getElementById('celebrationClose');
 
-            closeCaseBtn.addEventListener('click', () => {
+            closeCaseBtn.addEventListener('click', function() {
                 celebrationScreen.classList.add('active');
             });
 
-            celebrationClose.addEventListener('click', () => {
+            celebrationClose.addEventListener('click', function() {
                 celebrationScreen.classList.remove('active');
                 mainContent.classList.remove('visible');
                 loginScreen.style.display = 'flex';
@@ -963,18 +981,18 @@
                 });
             });
 
-            closeFullscreen.addEventListener('click', () => {
+            closeFullscreen.addEventListener('click', function() {
                 modal.classList.remove('active');
             });
 
-            modal.addEventListener('click', (e) => {
+            modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
                     modal.classList.remove('active');
                 }
             });
 
             // ESC
-            document.addEventListener('keydown', (e) => {
+            document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     modal.classList.remove('active');
                     celebrationScreen.classList.remove('active');
