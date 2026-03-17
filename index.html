@@ -42,11 +42,11 @@
             z-index: 9997;
         }
 
-        /* Военный HUD - угловые элементы */
+        /* Военный HUD - угловые элементы - адаптивные */
         .hud-corner {
             position: fixed;
-            width: 150px;
-            height: 150px;
+            width: min(150px, 15vw);
+            height: min(150px, 15vw);
             border: 3px solid rgba(200, 180, 100, 0.6);
             filter: drop-shadow(0 0 10px #ffd700);
             z-index: 9999;
@@ -54,29 +54,29 @@
         }
 
         .hud-corner.tl {
-            top: 20px;
-            left: 20px;
+            top: 10px;
+            left: 10px;
             border-right: none;
             border-bottom: none;
         }
 
         .hud-corner.tr {
-            top: 20px;
-            right: 20px;
+            top: 10px;
+            right: 10px;
             border-left: none;
             border-bottom: none;
         }
 
         .hud-corner.bl {
-            bottom: 20px;
-            left: 20px;
+            bottom: 10px;
+            left: 10px;
             border-right: none;
             border-top: none;
         }
 
         .hud-corner.br {
-            bottom: 20px;
-            right: 20px;
+            bottom: 10px;
+            right: 10px;
             border-left: none;
             border-top: none;
         }
@@ -113,7 +113,7 @@
             margin: 0 auto;
             position: relative;
             z-index: 100;
-            padding: 20px 30px;
+            padding: 15px 15px;
         }
 
         /* ЭКРАН ВХОДА - СТИЛЬ КОД */
@@ -129,7 +129,7 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            padding: 20px;
+            padding: 15px;
             transition: opacity 1s, visibility 1s;
         }
 
@@ -139,7 +139,7 @@
             background: rgba(10, 15, 12, 0.95);
             border: 3px solid #7a633b;
             box-shadow: 0 0 0 2px #2b3b2b, 0 0 50px #000, inset 0 0 30px #1d2d1d;
-            padding: 50px 40px;
+            padding: clamp(25px, 5vw, 50px) clamp(20px, 4vw, 40px);
             text-align: center;
             position: relative;
         }
@@ -151,7 +151,7 @@
             transform: translateX(-50%);
             background: #0f1412;
             color: #7f843f;
-            font-size: 14px;
+            font-size: clamp(10px, 2vw, 14px);
             letter-spacing: 5px;
             padding: 0 15px;
             white-space: nowrap;
@@ -159,34 +159,35 @@
 
         .login-header {
             font-family: 'Black Ops One', 'Impact', cursive;
-            font-size: 3rem;
+            font-size: clamp(2rem, 8vw, 3rem);
             color: #c9a55c;
             text-shadow: 3px 3px 0 #3f3f17, 0 0 20px #ffd700;
             text-transform: uppercase;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             letter-spacing: 5px;
+            line-height: 1.2;
         }
 
         .input-field {
             width: 100%;
             background: #1e2b1e;
             border: 2px solid #6b5a3f;
-            padding: 18px 25px;
-            font-size: 1.3rem;
+            padding: clamp(12px, 3vw, 18px) clamp(15px, 4vw, 25px);
+            font-size: clamp(1rem, 4vw, 1.3rem);
             color: #efe5c1;
             outline: none;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             font-family: 'Share Tech Mono', monospace;
             box-shadow: inset 0 0 15px #0f1f0f;
         }
 
         .login-btn {
             width: 100%;
-            padding: 18px;
+            padding: clamp(12px, 3vw, 18px);
             background: #1f422b;
             border: 3px solid #caad6a;
             color: #f5eaad;
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 6vw, 2rem);
             font-weight: 800;
             font-family: 'Black Ops One', cursive;
             text-transform: uppercase;
@@ -196,7 +197,7 @@
             letter-spacing: 3px;
         }
 
-        .login-btn:hover {
+        .login-btn:active {
             transform: translate(2px, 2px);
             box-shadow: 4px 4px 0 #030603;
         }
@@ -214,39 +215,41 @@
             pointer-events: all;
         }
 
-        /* ПРОФИЛЬ ГЕНЕРАЛА С МНОГО ФОТО */
+        /* ПРОФИЛЬ ГЕНЕРАЛА - АДАПТИВНЫЙ */
         .general-profile {
             background: rgba(0, 0, 0, 0.7);
             border: 3px solid #7a633b;
-            padding: 40px;
-            margin: 40px 0 30px;
+            padding: clamp(15px, 4vw, 40px);
+            margin: 30px 0 20px;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            justify-content: space-around;
-            gap: 30px;
-            box-shadow: 20px 20px 0 #030603;
+            justify-content: center;
+            gap: clamp(15px, 3vw, 30px);
+            box-shadow: 15px 15px 0 #030603;
             position: relative;
         }
 
         .general-profile::after {
             content: "КОМАНДИР ОТРЯДА";
             position: absolute;
-            bottom: -15px;
-            right: 30px;
+            bottom: -12px;
+            right: 15px;
             background: #0a0f0e;
             color: #caad6a;
-            font-size: 1rem;
-            padding: 5px 20px;
+            font-size: clamp(0.7rem, 2vw, 1rem);
+            padding: 4px 15px;
             border: 2px solid #7a633b;
             font-family: 'Share Tech Mono', monospace;
+            white-space: nowrap;
         }
 
         .general-photos {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            max-width: 600px;
+            gap: clamp(8px, 2vw, 15px);
+            max-width: 100%;
+            width: min(600px, 100%);
         }
 
         .general-photo {
@@ -260,7 +263,7 @@
             background: #1e2b1e;
         }
 
-        .general-photo:hover {
+        .general-photo:active {
             transform: translate(-2px, -2px);
             box-shadow: 8px 8px 0 #030603;
             border-color: #c59f5b;
@@ -275,11 +278,12 @@
 
         .general-text {
             text-align: center;
-            min-width: 300px;
+            width: 100%;
+            max-width: 400px;
         }
 
         .general-name {
-            font-size: 3rem;
+            font-size: clamp(1.8rem, 6vw, 3rem);
             font-family: 'Black Ops One', cursive;
             color: #c9a55c;
             text-shadow: 4px 4px 0 #3f3f17;
@@ -288,84 +292,89 @@
         }
 
         .general-age {
-            font-size: 2rem;
+            font-size: clamp(1.3rem, 4vw, 2rem);
             color: #cfb27c;
-            margin-top: 15px;
+            margin-top: 10px;
             background: #1b2a1f;
-            padding: 10px 30px;
+            padding: clamp(5px, 2vw, 10px) clamp(15px, 5vw, 30px);
             border: 2px solid #7a633b;
             display: inline-block;
             font-family: 'Share Tech Mono', monospace;
         }
 
-        /* ДЕКОРАТИВНЫЕ НАДПИСИ */
+        /* ДЕКОРАТИВНЫЕ НАДПИСИ - АДАПТИВНЫЕ */
         .decorative-text {
             display: flex;
-            justify-content: space-between;
-            margin: 20px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
             color: #5f734f;
             font-family: 'Share Tech Mono', monospace;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
+            letter-spacing: 1px;
         }
 
         .decorative-text span {
             border: 1px solid #3f5f3f;
-            padding: 5px 15px;
+            padding: 5px 10px;
             background: rgba(0,0,0,0.3);
+            white-space: nowrap;
         }
 
+        /* СТАТИСТИКА - АДАПТИВНАЯ */
         .mission-stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin: 30px 0;
+            gap: clamp(8px, 2vw, 15px);
+            margin: 20px 0;
             text-align: center;
         }
 
         .stat-item {
             background: rgba(20, 30, 20, 0.7);
             border: 2px solid #5f734f;
-            padding: 10px;
+            padding: clamp(5px, 1.5vw, 10px);
             font-family: 'Share Tech Mono', monospace;
         }
 
         .stat-value {
-            font-size: 2rem;
+            font-size: clamp(1.2rem, 4vw, 2rem);
             color: #caad6a;
         }
 
         .stat-label {
-            font-size: 0.8rem;
+            font-size: clamp(0.6rem, 1.8vw, 0.8rem);
             color: #8f9f7f;
             text-transform: uppercase;
         }
 
-        /* КНОПКА ПОКАЗАТЬ ОТРЯД */
+        /* КНОПКА ПОКАЗАТЬ ОТРЯД - АДАПТИВНАЯ */
         .show-squad-btn {
             background: #2f2a1f;
             border: 4px solid #caad6a;
             color: #f5eaad;
-            font-size: 2.2rem;
+            font-size: clamp(1.3rem, 5vw, 2.2rem);
             font-family: 'Black Ops One', cursive;
-            padding: 20px 40px;
-            margin: 30px auto;
+            padding: clamp(12px, 3vw, 20px) clamp(20px, 5vw, 40px);
+            margin: 20px auto;
             cursor: pointer;
-            box-shadow: 12px 12px 0 #030603;
+            box-shadow: 10px 10px 0 #030603;
             transition: all 0.2s;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             width: fit-content;
             display: block;
+            max-width: 90%;
         }
 
-        .show-squad-btn:hover {
+        .show-squad-btn:active {
             transform: translate(-3px, -3px);
-            box-shadow: 18px 18px 0 #030603;
+            box-shadow: 15px 15px 0 #030603;
             border-color: #ffd966;
         }
 
-        /* ПОДТВЕРЖДЕНИЕ */
+        /* ПОДТВЕРЖДЕНИЕ - АДАПТИВНОЕ */
         .confirm-modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -378,47 +387,47 @@
             visibility: hidden;
             opacity: 0;
             transition: all 0.3s;
-        }
-
-        .confirm-modal.active {
-            visibility: visible;
-            opacity: 1;
+            padding: 15px;
         }
 
         .confirm-content {
             max-width: 600px;
-            width: 90%;
+            width: 100%;
             background: #121b1a;
             border: 4px solid #7a633b;
-            padding: 50px 40px;
+            padding: clamp(20px, 5vw, 50px) clamp(15px, 4vw, 40px);
             text-align: center;
-            box-shadow: 20px 20px 0 #030603;
+            box-shadow: 15px 15px 0 #030603;
         }
 
         .confirm-question {
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
             font-family: 'Black Ops One', cursive;
             color: #c9a55c;
             text-shadow: 3px 3px 0 #3f3f17;
-            margin-bottom: 40px;
+            margin-bottom: 25px;
             text-transform: uppercase;
+            line-height: 1.3;
         }
 
         .confirm-buttons {
             display: flex;
-            gap: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
             justify-content: center;
         }
 
         .confirm-btn {
-            padding: 15px 50px;
-            font-size: 2rem;
+            padding: clamp(10px, 3vw, 15px) clamp(20px, 8vw, 50px);
+            font-size: clamp(1.3rem, 5vw, 2rem);
             font-family: 'Black Ops One', cursive;
             border: 3px solid;
             cursor: pointer;
             transition: 0.1s;
             text-transform: uppercase;
-            box-shadow: 8px 8px 0 #030603;
+            box-shadow: 6px 6px 0 #030603;
+            flex: 1 1 auto;
+            min-width: 120px;
         }
 
         .confirm-btn.yes {
@@ -433,14 +442,14 @@
             color: #d1a18c;
         }
 
-        .confirm-btn:hover {
+        .confirm-btn:active {
             transform: translate(2px, 2px);
-            box-shadow: 4px 4px 0 #030603;
+            box-shadow: 3px 3px 0 #030603;
         }
 
-        /* СЕКЦИЯ ОТРЯДА */
+        /* СЕКЦИЯ ОТРЯДА - АДАПТИВНАЯ */
         .squad-section {
-            margin-top: 40px;
+            margin-top: 30px;
             display: none;
         }
 
@@ -455,36 +464,36 @@
         }
 
         .squad-title {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             font-family: 'Black Ops One', cursive;
             color: #c9a55c;
             text-shadow: 3px 3px 0 #3f3f17;
             text-align: center;
-            margin: 30px 0;
+            margin: 20px 0;
             border-bottom: 3px solid #7a633b;
-            padding-bottom: 20px;
+            padding-bottom: 15px;
             text-transform: uppercase;
         }
 
         .family-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: 20px;
+            margin: 30px 0;
         }
 
         .fighter-card {
             background: #1b211d;
             border: 3px solid #7f6b4b;
-            padding: 25px;
-            box-shadow: 12px 12px 0 #030303;
+            padding: 15px;
+            box-shadow: 10px 10px 0 #030303;
             transition: all 0.2s;
             cursor: pointer;
         }
 
-        .fighter-card:hover {
+        .fighter-card:active {
             transform: translate(-3px, -3px);
-            box-shadow: 18px 18px 0 #030303;
+            box-shadow: 15px 15px 0 #030303;
             border-color: #c59f5b;
         }
 
@@ -493,7 +502,7 @@
             aspect-ratio: 1/1.1;
             border: 3px solid #8f7d59;
             overflow: hidden;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             background: #1e2b1e;
         }
 
@@ -505,12 +514,12 @@
             display: block;
         }
 
-        .fighter-card:hover .fighter-photo img {
+        .fighter-card:active .fighter-photo img {
             transform: scale(1.05);
         }
 
         .fighter-name {
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
             font-family: 'Black Ops One', cursive;
             color: #e0cd9c;
             text-align: center;
@@ -518,7 +527,7 @@
         }
 
         .fighter-role {
-            font-size: 1.3rem;
+            font-size: clamp(1rem, 3vw, 1.3rem);
             color: #bcb088;
             text-align: center;
             margin: 5px 0;
@@ -526,41 +535,42 @@
         }
 
         .fighter-age {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             color: #9ea88b;
             text-align: center;
             background: #1c2f24;
-            padding: 5px 15px;
+            padding: 5px 12px;
             border: 1px solid #70563b;
             display: inline-block;
-            margin: 10px auto 0;
+            margin: 8px auto 0;
         }
 
-        /* КНОПКА ЗАКРЫТЬ ДЕЛО */
+        /* КНОПКА ЗАКРЫТЬ ДЕЛО - АДАПТИВНАЯ */
         .close-case-btn {
             background: #2f2a1f;
             border: 3px solid #caad6a;
             color: #f5eaad;
-            font-size: 1.8rem;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
             font-family: 'Black Ops One', cursive;
-            padding: 15px 30px;
-            margin: 40px auto 30px;
+            padding: clamp(10px, 2.5vw, 15px) clamp(15px, 4vw, 30px);
+            margin: 30px auto 20px;
             cursor: pointer;
-            box-shadow: 8px 8px 0 #030603;
+            box-shadow: 6px 6px 0 #030603;
             transition: all 0.2s;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             width: fit-content;
             display: block;
+            max-width: 90%;
         }
 
-        .close-case-btn:hover {
+        .close-case-btn:active {
             transform: translate(-2px, -2px);
-            box-shadow: 12px 12px 0 #030603;
+            box-shadow: 10px 10px 0 #030603;
             border-color: #ffd966;
         }
 
-        /* ПОЛНОЭКРАННОЕ ПОЗДРАВЛЕНИЕ */
+        /* ПОЛНОЭКРАННОЕ ПОЗДРАВЛЕНИЕ - АДАПТИВНОЕ */
         .fullscreen-celebration {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -573,7 +583,8 @@
             visibility: hidden;
             opacity: 0;
             transition: all 1s;
-            border: 10px solid #7a633b;
+            border: 5px solid #7a633b;
+            padding: 20px;
         }
 
         .fullscreen-celebration.active {
@@ -584,6 +595,7 @@
         .celebration-content {
             text-align: center;
             animation: militaryPulse 2s infinite alternate;
+            width: 100%;
         }
 
         @keyframes militaryPulse {
@@ -592,54 +604,55 @@
         }
 
         .celebration-name {
-            font-size: 5rem;
+            font-size: clamp(2rem, 10vw, 5rem);
             font-family: 'Black Ops One', cursive;
             color: #c9a55c;
-            text-shadow: 8px 8px 0 #3f3f17, 0 0 50px #ffd700;
+            text-shadow: 4px 4px 0 #3f3f17, 0 0 30px #ffd700;
             text-transform: uppercase;
             line-height: 1.3;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .celebration-age {
-            font-size: 7rem;
+            font-size: clamp(3rem, 15vw, 7rem);
             font-family: 'Black Ops One', cursive;
             color: #ffd966;
-            text-shadow: 6px 6px 0 #7a633b, 0 0 80px #ffaa00;
-            margin: 20px 0;
+            text-shadow: 3px 3px 0 #7a633b, 0 0 50px #ffaa00;
+            margin: 15px 0;
         }
 
         .celebration-quote {
-            font-size: 2.5rem;
+            font-size: clamp(1.2rem, 4vw, 2.5rem);
             color: #bcb088;
             font-family: 'Share Tech Mono', monospace;
             border-top: 3px solid #7a633b;
             border-bottom: 3px solid #7a633b;
-            padding: 20px 0;
+            padding: 15px 0;
             max-width: 800px;
-            margin: 30px auto;
+            margin: 20px auto;
         }
 
         .celebration-close {
-            position: absolute;
-            bottom: 50px;
-            right: 50px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
             background: #1f422b;
             border: 3px solid #caad6a;
             color: #f5eaad;
-            font-size: 1.8rem;
+            font-size: clamp(1rem, 4vw, 1.8rem);
             font-family: 'Black Ops One', cursive;
-            padding: 12px 30px;
+            padding: 10px 20px;
             cursor: pointer;
-            box-shadow: 8px 8px 0 #030603;
+            box-shadow: 5px 5px 0 #030603;
+            z-index: 20001;
         }
 
-        .celebration-close:hover {
+        .celebration-close:active {
             transform: translate(2px, 2px);
-            box-shadow: 4px 4px 0 #030603;
+            box-shadow: 2px 2px 0 #030603;
         }
 
-        /* МОДАЛКА ПОЛНОГО РАЗМЕРА ФОТО */
+        /* МОДАЛКА ПОЛНОГО РАЗМЕРА ФОТО - АДАПТИВНАЯ */
         .fullscreen-modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -651,6 +664,7 @@
             visibility: hidden;
             opacity: 0;
             transition: 0.3s;
+            padding: 15px;
         }
 
         .fullscreen-modal.active {
@@ -662,8 +676,8 @@
             max-width: 95vw;
             max-height: 95vh;
             position: relative;
-            border: 5px solid #7a633b;
-            box-shadow: 20px 20px 0 #030603;
+            border: 3px solid #7a633b;
+            box-shadow: 10px 10px 0 #030603;
         }
 
         .fullscreen-content img {
@@ -677,7 +691,7 @@
             top: -40px;
             right: 0;
             color: #caad6a;
-            font-size: 3rem;
+            font-size: clamp(2rem, 8vw, 3rem);
             cursor: pointer;
             font-family: 'Black Ops One', cursive;
         }
@@ -696,16 +710,16 @@
     <div class="login-screen" id="loginScreen">
         <div class="login-content">
             <div class="login-header">CALL OF DUTY</div>
-            <div style="color: #7f843f; font-family: 'Share Tech Mono'; font-size: 1.5rem; margin-bottom: 30px;">ОПЕРАЦИЯ "ЮБИЛЕЙ"</div>
+            <div style="color: #7f843f; font-family: 'Share Tech Mono'; font-size: clamp(1rem, 4vw, 1.5rem); margin-bottom: 20px;">ОПЕРАЦИЯ "ЮБИЛЕЙ"</div>
             
             <input type="text" class="input-field" id="loginInput" placeholder="ПОЗЫВНОЙ" value="commander">
             <input type="password" class="input-field" id="passwordInput" placeholder="КОД ДОСТУПА" value="141">
             
-            <div class="error-message" id="errorMessage" style="color:#cf6f5f; font-size:1.3rem;"></div>
+            <div class="error-message" id="errorMessage" style="color:#cf6f5f; font-size:clamp(1rem, 3vw, 1.3rem);"></div>
             
             <button class="login-btn" id="loginBtn">ВОЙТИ</button>
             
-            <div style="color: #6f7e5f; margin-top: 25px; font-family: 'Share Tech Mono';">
+            <div style="color: #6f7e5f; margin-top: 20px; font-family: 'Share Tech Mono'; font-size: clamp(0.8rem, 2.5vw, 1rem);">
                 commander // 141
             </div>
         </div>
@@ -721,27 +735,27 @@
                 <span>◄ МИССИЯ: ПОЗДРАВЛЕНИЕ</span>
             </div>
 
-            <!-- ПРОФИЛЬ ГЕНЕРАЛА С 6 ФОТО (ВСТАВЬ СВОИ ФОТО ИЗ ПАПКИ) -->
+            <!-- ПРОФИЛЬ ГЕНЕРАЛА С 6 ФОТО -->
             <div class="general-profile" id="generalProfile">
                 <div class="general-photos">
                     <!-- ЗАМЕНИ ЭТИ ПУТИ НА РЕАЛЬНЫЕ ПУТИ К ТВОИМ ФОТО -->
                     <div class="general-photo" data-caption="Командир, 2025">
-                        <img src="papaphoto1.jpg" alt="Фото 1" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО 1 (не найдено)'">
+                        <img src="papaphoto1.jpg" alt="Фото 1" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО 1'">
                     </div>
                     <div class="general-photo" data-caption="На задании">
-                        <img src="papaphoto2.jpg" alt="Фото 2" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО 2 (не найдено)'">
+                        <img src="papaphoto2.jpg" alt="Фото 2" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО 2'">
                     </div>
                     <div class="general-photo" data-caption="Ветеран">
-                        <img src="papaphoto3.jpg" alt="Фото 3" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО 3 (не найдено)'">
+                        <img src="papaphoto3.jpg" alt="Фото 3" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО 3'">
                     </div>
                     <div class="general-photo" data-caption="Отдых">
-                        <img src="papaphoto4.jpg" alt="Фото 4" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО 4 (не найдено)'">
+                        <img src="papaphoto4.jpg" alt="Фото 4" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО 4'">
                     </div>
                     <div class="general-photo" data-caption="С друзьями">
-                        <img src="papaphoto5.jpg" alt="Фото 5" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО 5 (не найдено)'">
+                        <img src="papaphoto5.jpg" alt="Фото 5" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО 5'">
                     </div>
                     <div class="general-photo" data-caption="Легенда">
-                        <img src="papaphoto6.jpg" alt="Фото 6" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО 6 (не найдено)'">
+                        <img src="papaphoto6.jpg" alt="Фото 6" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО 6'">
                     </div>
                 </div>
                 <div class="general-text">
@@ -773,7 +787,7 @@
             <!-- КНОПКА ПОКАЗАТЬ ОТРЯД -->
             <button class="show-squad-btn" id="showSquadBtn">ПОКАЗАТЬ ОТРЯД</button>
 
-            <!-- ОТРЯД "СЕМЬЯ" С ОБНОВЛЕННЫМИ ИМЕНАМИ И ВОЗРАСТАМИ -->
+            <!-- ОТРЯД "СЕМЬЯ" -->
             <div class="squad-section" id="squadSection">
                 <div class="squad-title">★ ОТРЯД "СЕМЬЯ" ★</div>
 
@@ -781,7 +795,7 @@
                     <!-- ЖЕНА АННА, 44 ГОДА -->
                     <div class="fighter-card" data-caption="Супруга командира">
                         <div class="fighter-photo">
-                            <img src="anna.jpg" alt="Анна" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО АННЫ (не найдено)'">
+                            <img src="anna.jpg" alt="Анна" onerror="this.style.display='none'; this.parentElement.innerHTML='АННА'">
                         </div>
                         <div class="fighter-name">АННА</div>
                         <div class="fighter-role">СУПРУГА</div>
@@ -791,7 +805,7 @@
                     <!-- ДОЧЬ ЕВА, 18 ЛЕТ -->
                     <div class="fighter-card" data-caption="Дочь командира">
                         <div class="fighter-photo">
-                            <img src="eva.jpg" alt="Ева" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО ЕВЫ (не найдено)'">
+                            <img src="eva.jpg" alt="Ева" onerror="this.style.display='none'; this.parentElement.innerHTML='ЕВА'">
                         </div>
                         <div class="fighter-name">ЕВА</div>
                         <div class="fighter-role">ДОЧЬ</div>
@@ -801,7 +815,7 @@
                     <!-- СЫН ЛЁВА, 10 ЛЕТ -->
                     <div class="fighter-card" data-caption="Сын командира">
                         <div class="fighter-photo">
-                            <img src="leva.jpg" alt="Лёва" onerror="this.style.display='none'; this.parentElement.innerHTML='ФОТО ЛЁВЫ (не найдено)'">
+                            <img src="leva.jpg" alt="Лёва" onerror="this.style.display='none'; this.parentElement.innerHTML='ЛЁВА'">
                         </div>
                         <div class="fighter-name">ЛЁВА</div>
                         <div class="fighter-role">СЫН</div>
@@ -844,8 +858,8 @@
             <div class="celebration-name">ЕВГЕНИЙ<br>ВИКТОРОВИЧ</div>
             <div class="celebration-age">47</div>
             <div class="celebration-quote">"ВЕТЕРАН НЕ ВЫХОДИТ НА ПЕНСИЮ<br>ОН ПОЛУЧАЕТ НОВОЕ ЗАДАНИЕ"</div>
-            <div style="font-size: 3rem; color: #caad6a; font-family: 'Black Ops One';">С ДНЁМ РОЖДЕНИЯ!</div>
-            <div style="font-size: 2rem; color: #9ea88b; margin-top: 30px; font-family: 'Share Tech Mono';">ОПЕРАЦИЯ ВЫПОЛНЕНА</div>
+            <div style="font-size: clamp(1.8rem, 6vw, 3rem); color: #caad6a; font-family: 'Black Ops One';">С ДНЁМ РОЖДЕНИЯ!</div>
+            <div style="font-size: clamp(1.2rem, 4vw, 2rem); color: #9ea88b; margin-top: 20px; font-family: 'Share Tech Mono';">ОПЕРАЦИЯ ВЫПОЛНЕНА</div>
         </div>
         <button class="celebration-close" id="celebrationClose">ЗАВЕРШИТЬ</button>
     </div>
@@ -861,7 +875,7 @@
     <script>
         (function() {
             // Создание дымовых частиц
-            for (let i = 0; i < 40; i++) {
+            for (let i = 0; i < 30; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'smoke-particle';
                 particle.style.left = Math.random() * 100 + '%';
